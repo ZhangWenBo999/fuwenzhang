@@ -19,7 +19,7 @@
             "which_dataset": {  // import designated dataset using arguments 
                 "name": ["data.dataset", "InpaintDataset"], // import Dataset() class / function(not recommend) from data.dataset.py (default is [data.dataset.py])
                 "args":{ // arguments to initialize dataset
-                    "data_root": "datasets/celebahq/flist/train.flist",
+                    "data_root": "datasets/CelebA-HQ/train",
                     "data_len": -1,
                     "mask_config": {
                         "mask_mode": "hybrid"
@@ -29,15 +29,15 @@
             "dataloader":{
                 "validation_split": 2, // percent or number 
                 "args":{ // arguments to initialize train_dataloader
-                    "batch_size": 3, // batch size in each gpu
-                    "num_workers": 4,
+                    "batch_size": 1, // batch size in each gpu
+                    "num_workers": 0,
                     "shuffle": true,
                     "pin_memory": true,
                     "drop_last": true
                 },
                 "val_args":{ // arguments to initialize valid_dataloader, will overwrite the parameters in train_dataloader
                     "batch_size": 1, // batch size in each gpu
-                    "num_workers": 4,
+                    "num_workers": 0,
                     "shuffle": false,
                     "pin_memory": true,
                     "drop_last": false
@@ -48,7 +48,7 @@
             "which_dataset": {
                 "name": "InpaintDataset", // import Dataset() class / function(not recommend) from default file
                 "args":{
-                    "data_root": "datasets/celebahq/flist/test.flist",
+                    "data_root": "datasets/CelebA-HQ/test",
                     "mask_config": {
                         "mask_mode": "center"
                     }
@@ -56,8 +56,8 @@
             },
             "dataloader":{
                 "args":{
-                    "batch_size": 8,
-                    "num_workers": 4,
+                    "batch_size": 1,
+                    "num_workers": 0,
                     "pin_memory": true
                 }
             }
@@ -134,7 +134,7 @@
 
     "train": { // arguments for basic training
         "n_epoch": 1e8, // max epochs, not limited now
-        "n_iter": 1e8, // max interations
+        "n_iter": 960000, // max interations
         "val_epoch": 5, // valdation every specified number of epochs
         "save_checkpoint_epoch": 10,
         "log_iter": 1e3, // log every specified number of iterations
